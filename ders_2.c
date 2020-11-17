@@ -85,7 +85,11 @@ Least Significant Bit   (En Düşük Anlamlı Bit)
 8 Byte  18.446.744.073.709.551.615
 
 One's Complement (Bire Tümleme)
+Sayıdaki bütün bitler ters çevrilir. (1'ler 0. 0'lar 1.)
+
 Two's Complement (İkiye Tümleme)
+Sayı ilk önce bire tümlenir. Ardından 1 eklenir.
+KISAYOL: 0. bitten başlayarak, 1 görene kadar aynen yazılır, kalan bitlerin tersi yazılır.
 
 0101 1100
 1111 1111
@@ -93,5 +97,71 @@ Two's Complement (İkiye Tümleme)
 0001 0000
 
 Negatif bir tam sayının değerini almak için o sayının ikiye tümleyini alınır.
+
+Atomlar
+
+token (atom)
+Derleyici açısından kaynak kodun en küçük birimi.
+
+Derleme işleminin başında derleyici kaynak kodu token'larına ayırır. (tokenizing - atomlarına ayrıma)
+Bu süreçte derleyici elde ettiği her bir atomu kategorilerine ayrır.
+
+Atom kategorileri şunlardır
+
+keywords        (anahtar sözcükler)
+isimler         (identifiers)
+sabitler        (constant / literal)
+operatorler     (operatörler - işleçler)
+yazı sabitleri  (string literals)
+delimeter       (ayraçlar)
+
+-----------------------------------------------------------------------
+KEYWORDS (Anahtar Sözcükler)
+
+Dil tarafından rezerve edilen başka bir amaçla kullanılması yasaklanan sözcükler.
+C89 standartlarına göre C dilinde 32 anahtar sözcük vardır.
+
+auto break case char const continue default do
+double else enum extern float for goto if
+int long register return short signed sizeof static
+struct switch typedef union unsigned void volatile while
+
+C99 standartları ile 5 anahtar sözcük daha dile eklenmiştir.
+
+restrict inline _Bool _Complex _Imaginary
+
+C11 standartları ile 7 anahtar sözcük daha dile eklenmiştir.
+
+_Alignas _Alignof _Atomic _Generic _Noreturn _ Static_assert _Thread_local
+-----------------------------------------------------------------------
+IDENTIFIERS (İsimler)
+
+İsimler kaynak koddaki, kaynak dosyadaki varlıklara verilen adlardır.
+
+Nelerin isimleri var;
+
+variables       (Değişkenlerin)
+functions       (Fonksiyonların)
+constants       (Sabitlerin)
+tags/labels     (Etiketlerin)
+types           (Türlerin)
+
+1) Anahtar sözcükler isim olarak kullanılamaz.
+2) İsimler 63 karakterlik aşağıda tanımlanan karakter kümesi dışında karakter içeremez.
+
+A..Z    26  Latin-Roman karakter setindeki büyük harf karakterler
+a..z    26  Latin-Roman karakter setindeki küçük harf karakterler
+0..9    19  Rakam karakterleri (Arabic Numerals)
+_           Alt tire karakteri (underscore)
+
+İsimler rakam karakterleri ile başlayamaz.
+C isimlerin kullanımı açısından case-sensitive (büyük/küçük harf duyarlı) bir dildir.
+
+case-sensitive      (büyük/küçük harf duyarlı)
+case-insensitive    (büyük/küçük harf duyarsız)
+
+Aşağıdaki isimlerin her biri farklı isimlerdir.
+
+Sum sum suM SUM
 
 */
