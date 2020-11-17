@@ -25,4 +25,36 @@ Artificial              (Yapay)
 Portable                (Taşınabilir)
 Expressive              (İfade Gücü Yüksek)
 
+Makinaya yeterince yakın, insana da uzak değil. (Metale yakın)
+
+Fortran
+Cobol
+Algol
+
+Algol
+    CPL
+        BCPL   
+            B
+                new B
+                    C
+
+Brian Kernighan
+Dennis Ritchie
+Ken Thompson
+
+C'nin Doğum Tarihi:
+1970 - 1989 Yılları Arasında Herhangi Bir Standardı Olmadan Kullanıldı.
+
+ANSI C
+1983 - 1989 Yılları Arasında C'nin İlk Standartları Kullanılmaya Başlandı.
+
+C89
+    C95
+        C99
+            C11
+                C17  
+
+Backward Compatibility      (Geçmişe Doğru Uyumluluk)
+Classic C / Traditional C
+
  */
