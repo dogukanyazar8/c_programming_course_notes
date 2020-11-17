@@ -35,8 +35,8 @@ Algol
     CPL
         BCPL   
             B
-                new B
-                    C
+            new B
+                C
 
 Brian Kernighan
 Dennis Ritchie
@@ -56,5 +56,6 @@ C89
 
 Backward Compatibility      (Geçmişe Doğru Uyumluluk)
 Classic C / Traditional C
+ANSI C
 
  */
