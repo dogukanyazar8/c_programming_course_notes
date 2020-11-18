@@ -34,6 +34,12 @@ Compile Time (Derleme Zamanı)
 Link Time (Bağlama Zamanı)
 Run Time (Çalışma Zamanı)
 
+Pre-processor Directives (Önişlemci Komutları)
+
+C ve C++ dillerinde, derleyicinin giriş modülüdür ve ayrı bir programdır.
+Ön işlemci kendi komutlarını yürütür, bu komutlara önişlemci komutları denir.
+# karakteri ile başlayan satırlar önişlemci programın komutlarıdır.
+#define
 
 Bulgu İletisi
 
@@ -111,9 +117,9 @@ Atom kategorileri şunlardır
 keywords        (anahtar sözcükler)
 isimler         (identifiers)
 sabitler        (constant / literal)
-operatorler     (operatörler - işleçler)
+operators       (operatörler - işleçler)
 yazı sabitleri  (string literals)
-delimeter       (ayraçlar)
+ayraçlar        (delimeters)
 
 -----------------------------------------------------------------------
 KEYWORDS (Anahtar Sözcükler)
