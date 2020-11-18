@@ -25,6 +25,8 @@ Artificial              (Yapay)
 Portable                (Taşınabilir)
 Expressive              (İfade Gücü Yüksek)
 
+Prosedürel Programlama Paradigması
+
 Makinaya yeterince yakın, insana da uzak değil. (Metale yakın)
 
 Fortran

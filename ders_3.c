@@ -120,7 +120,9 @@ bunu belirleyen nesnenin türüdür.
 
 b) bu byte'lardaki 1'ler ve sıfırların nasıl yorumlanacağını, veri türünü.
 
-c) bu nesnenin değerini.
+c) değer kategorileri (value category)
+
+d) sabit ifadesi olup olmadıkları (constant - non constant expression)
 
 DATA TYPES (Veri Türleri)
 
@@ -145,10 +147,10 @@ Expression statement (İfade Deyimi)
 Null Statement
 ;
 
-Compound Statements (Block)
+Compound Statements (Bileşik Deyimler) Blokların oluşturduğu deyimler.
 {
-    //Opening Brace
-    //Closing Brace
+    //Opening Brace - Left Brace
+    //Closing Brace - Right Brace
 }
 
 Control Statements
@@ -168,5 +170,101 @@ goto
 break
 continue
 return
+
+Declaration  (Bildirim)
+
+Definition   (Tanımlama)
+Derleyicinin, programın çalışma zamanına yönelik bellekte bir yer ayırması gerekiyor. 
+
+Her tanımlama bir bildirimdir ama her bildirim bir tanımlama olmak zorunda değildir.
+-----------------------------------------------------------------------
+C dilinin sentaksında kullanmayan karakterler.
+
+´ (Backtick)
+@ (At Sign)
+$ (Dollar Sign)
+
+printable characters
+
+punctuation characters
+
+()  Paranthesis (Opening/Left Paranthesis - Closing/Right Paranthesis)
+[]  Square Bracket
+{}  Curly Brace
+< > Angular Bracket (Açısal Parantez)
+&   Ampersand
+*   Asterisk
+,   Comma
+-   Hypen (dash)
+.   Period (full stop)
+:   colon
+;   semicolon
+_   underscore
+^   caret
+|   pipe
+~   tilde (tilda)
+
+control characters
+-----------------------------------------------------------------------
+
+ method
+ subroutine
+ procedure
+ function
+
+ alt program
+ ana programın bir parçasını oluşturan, bağımsız bir işi gerçekleştirmek için yazılan kod birimi.
+
+ Global Namespace (Global İsim Alanı)
+ Bu isim alanında sadece bildirim yazılabilir, deyim yazılamıyor.
+
+ Local Namespace  (Lokal İsim Alanı)
+ Bu isim alanında bildirim de yazılabilir, deyim de yazılabilir.
+ -----------------------------------------------------------------------
+function (fonksiyon-işlev)
+
+to define   a function (fonksiyonu tanımlamak, fonksiyonun kodunu yazmak, implement etmek)
+function definition (fonksiyon tanımı)
+
+to call     a function (fonksiyonu çağırmak)
+function call (fonksiyon çağrısı)
+
+to declare  a fuctiton (fonksiyonu bildirmek)
+function declaration (fonksiyon bildirimi)
+-----------------------------------------------------------------------
+
+#include <stdio.h>
+
+int main(void) 
+{
+    printf("hello world!");
+}
+
+main block of a function
+-----------------------------------------------------------------------
+
+data types (veri türleri)
+
+declaration & definition
+    scope (kapsam)
+    name lookup (isim arama)
+    storage duration (ömür)
+
+-----------------------------------------------------------------------
+Tanımsız Davranış       (Undefined Behavior) (UB)
+Derleyicinin nasıl bir kod üreteceği konusunda bir garanti yok. Derleme zamanında ya da programın çalışma zamanında her şey olabilir.
+Bu duruma bizim beklentimiz de dahil. (Program çalışma zamanında beklediğiniz gibi doğru çalışıyordur fakat bu programın doğru olduğu anlamına gelmiyor.)
+Neden UB var? Bunun sebebi derleyici optimizasyonu.
+
+a) derleyici sentaks hatası verebilir
+b) derleyici uyarı mesajı verebilir
+c) derleyici sessiz kalabilir
+
+Örnek olarak işaretli tam sayı türlerinde taşma tanımsız davranıştır.
+
+Belirlenmemiş Davranış  (Unspecified Behavior)
+Derleyici standartların belirlediği iki ya da daha fazla seçeneğe göre kod üretebilir. Derleyici nasıl bir kod üreteceğini belgelemek zorunda değildir.
+
+Derleyiciye Bağlı       (Implementation-Defined)
 
  */
