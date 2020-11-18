@@ -83,11 +83,9 @@ int a[10];
 
 &[5];
 
-
 EXPRESSION -> Data Type (Veri Türü)
 Her ifadenin bir veri türü olmak zorundadır. Dil tarafından belirlenmiş türlerden biri olmak zorundadır.
 Bir ifadenin değeri ve türü vardır.
-
 
 int x = 10;
 x + 2;
@@ -104,6 +102,71 @@ x + y           //sabit ifadesi değildir.
 int a[buradaki_sabit_ifadesi_olması_gerekir];
 int a[10];
 
+Object (Nesne) (Variable)
 
+C dilinde nesnelerin veri türleri vardır.
+
+staticly typed language (c,c++,java,c#)
+derleyici derleme zamanında verinin türünü koda bakarak anlıyor, yorumluyor.
+dynamicly typed language ()
+derleyici derleme zamanında verinin türünü programın çalışma zamanında anlıyor, yorumluyor.
+
+nesnenin türü
+data type of an object
+
+a) söz konusu nesne için bellekte kaç byte yer ayrılacak,
+storage of an object (STORAGE).
+bunu belirleyen nesnenin türüdür.
+
+b) bu byte'lardaki 1'ler ve sıfırların nasıl yorumlanacağını, veri türünü.
+
+c) bu nesnenin değerini.
+
+DATA TYPES (Veri Türleri)
+
+Basic Types (fundamental types - default tpyes - built-in types - primitive)
+User Defined Types (Kodla oluşturulan veri türü diyebiliriz(programcı tarafından oluşturulan))
+
+C dilinin cümleleri.
+
+Declaration     (Bildirim)
+Bildirimler isimlerin ne anlama geldiğini, ne olduğunu anlatan C cümleleridir.
+int x;
+void func(int);
+
+Statement       (Deyim)  (namelookup)
+Derleyicinin kod üretmesini sağlayacak C cümleleridir. İşlem yaptırmaya yönelik.
+a = b + c;
+
+Expression statement (İfade Deyimi)
+    x++;
+İfadenin sonuna noktalı virgül koyularak ifade deyimi elde edilebilir.
+
+Null Statement
+;
+
+Compound Statements (Block)
+{
+    //Opening Brace
+    //Closing Brace
+}
+
+Control Statements
+Dil tarafından belirlenmiş özel sentaksa sahiplerdir.
+En az bir anahtar sözcükleriyle kullanırlar.
+Varlık nedenleri ise programın çalışma zamanında programın akış yönünü belirlemek, değiştirmek, yönlendirmek.
+
+if
+
+while
+do while
+for
+switch
+
+goto
+
+break
+continue
+return
 
  */

@@ -16,6 +16,7 @@ Bit (Binary Digit)
 Translator: Programın amacı bir dilde yazılmış bir programı başka bir dile çevirmekse, çevirici (translator) olarak adlandırılır.
 Compiler: Bu çevirme işleminde daha yüksek bir seviyeli dilden, düşük seviyeye çeviren program compiler (derleyici) olarak adlandırılır.
 
+Derleyici için kaynak dosya bir birimdir. Translation Unit. Çeviri birimi.
 -----------------------------------------------------------------------
 Source File (Kaynak dosyası - guitar_tuner.c veya arpeggio.cpp)
 
