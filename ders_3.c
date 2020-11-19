@@ -260,11 +260,13 @@ a) derleyici sentaks hatası verebilir
 b) derleyici uyarı mesajı verebilir
 c) derleyici sessiz kalabilir
 
-Örnek olarak işaretli tam sayı türlerinde taşma tanımsız davranıştır.
+Örnek olarak işaretli tam sayı türlerinde taşma (overflow) tanımsız davranıştır.
 
 Belirlenmemiş Davranış  (Unspecified Behavior)
 Derleyici standartların belirlediği iki ya da daha fazla seçeneğe göre kod üretebilir. Derleyici nasıl bir kod üreteceğini belgelemek zorunda değildir.
 
-Derleyiciye Bağlı       (Implementation-Defined)
+Derleyiciye Bağlı Durum      (Implementation-Defined)
+Derleyici standartların belirlediği iki ya da daha fazla seçeneğe göre kod üretebilir. Derleyici nasıl bir kod üreteceğini belgelemek zorundadır.
+Belirlenmemiş Davranışın bir alt kümesi. 
 
  */
