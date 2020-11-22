@@ -1,6 +1,7 @@
 /* 
 
 Ders4
+
 -----------------------------------------------------------------------
 BASIC TYPES
     Integer Types
@@ -74,5 +75,121 @@ sign bit
 1 bit: sayının işaretini belirtmek için kullanılıyor
 8 bit: sayının büyüklüğü belirtmek için çarpan değerini tutuyor
 23 bit: mantissa alanını belirtmek için kullanılıyor
+
+-----------------------------------------------------------------------
+
+DECLARATION (Bildirim)
+Bir ismin ne olduğunu anlatan, ifade eden C cümleleridir.
+    int x = 10; (Bu C cümlesi bir bildirimdir.)
+
+STATEMENT   (Deyim)
+İş yaptırmaya yönelik C cümleleridir.
+    x++;
+
+Name Lookup (İsim Arama) (dilin isim arama kuralları)
+
+Derleyici isim arama sürecinde bir ismi arayıp, bulamazsa sentaks hatasıdır.
+(name lookup error) örnek hata mesajı: undeclared identifier 
+
+
+C ve C++ dillerinde isim arama 
+
+a) belirli bir sıraya göre yapılır. (dilin kurallarına göre)
+b) isim arama arana ismin bulunmasıyla sona erer, bir daha başlamaz, isim bulunduktan sonra diğer kontroller yapılır.
+
+C dilinde değişken bildirim sentaksı. İki farklı şekilde yapılabilir.
+
+DeğişkenTürü Değişkenİsmi;
+
+int x;
+double dval;
+
+DeğişkenTürü Değişkenİsmi = İlkDeğer; (Initialize Etmek, Initialization (ilk değer vermek))
+
+_Bool
+
+char
+signed char
+unsigned char
+
+short
+short int
+signed short
+signed short int
+
+unsigned short
+unsigned short int
+
+int
+signed int
+signed (varsayılan olarak int türü anlamına geliyor)
+
+unsigned
+unsigned int
+
+long
+long int
+signed long
+signed long int
+
+unsigned long
+unsigned long int
+
+long long
+long long it
+signed long long
+signed long long it
+
+unsigned long long
+unsigned long long int
+
+Değişken ismi iyi seçilmiş olacak.
+Türkçe isimlendirme yapmayın.
+İyi isim zaman ister.
+
+Konvensiyon (Convention) (Uzlaşım)
+
+camel case
+snake case
+
+double valueAddedTaxIncreaseRate; (camel case) (windows sistem programlamada yaygın)
+double value_added_tax_increase_rate; (snake case) (unix sistem programlamada yaygın)
+
+Asla değişkenlere ve fonksiyonlara tamamı büyük harf isimlerdirme yapmayın.
+Birbirine çok yakın isimler seçmeyin.
+-----------------------------------------------------------------------
+
+Scope (Kapsam - Bilinirlik Alanı)
+Storage Duration (Ömür)
+
+Nesnelerin ömürleri var. (storage duration) (life span - life cycle)
+
+Programın çalışma zamanında, bir değişken veya bir nesnenin bellekteki bytelardan oluşan kod blokları.
+Bu değişkenler bellekte ne kadar süreyle kalacak? Buna storage duration deniyor.
+
+automatic storage class
+Programın akışı bir koda girdiğinde nesne hayata geliyor, bellek bir yer ediniyor.
+Programın akışı o kod bloğundan çıktığında ilgili bellek alanından çıkıyor.
+
+static storage class
+Programın çalışma zamanında bellekteki yerlerini alırlar ve programın sonuna kadar bellekteki yerlerini korurlar.
+Programın ömrüyle aynıdır.
+
+dynamic storage class
+Programcı bir değişkeni ne zaman hayata başlatmak isterse başlatabiliyor.
+Ne zaman sonlandırmak isterse sonlandırabiliyor.
+
+++ Eğer değişken statik ömürlü ise o değişkeni ilk değer vermeden tanımlarsak hayata 0 değeri ile başlar.
+++ Eğer değişken otomatik ömürlü ise o değişkeni ilk değer vermeden tanımlarsak hayata garbage value / çöp değeri ile başlar.
+(Indetermined Value) (daha önceki programın oluşturduğu byte'larla hayata başlayacak, garbage value)
+
+++İlk değer verilmemiş otomatik ömürlü değişkenleri çöp değeri ile kullanmak tanımsız davranıştır.
+
+Global isim alanında bir değişken bildirimi yapılırsa, global variable olur.
+Ve bu değişkenler, statik ömürlü değişkenlerdir. Değiştirilemez.
+
+Lokal isim alanında bir değişken bildirimi yapılırsa, local variable olur.
+Ve bu değişkenler, otomatik ömürlü değişkenlerdir.
+
 
  */
