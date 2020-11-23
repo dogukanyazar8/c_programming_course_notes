@@ -117,4 +117,16 @@ int main()
     }
 }
 
+
+NAME HIDING (İsmin Gizlenmesi)
+
+int x = 10;
+
+int main()
+{
+    int x = 45; //İlk önce burada aranır.
+    
+    printf("x = %d", x);
+}
+
  */
