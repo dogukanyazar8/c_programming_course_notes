@@ -120,7 +120,20 @@ int main()
 
 NAME HIDING (İsmin Gizlenmesi)
 
-int x = 10;
+İsim arama kuralları nedeniyle bir ismin daha dar scope'da aynı ismin bildirilmesi nedeniyle kullanılamaması demek.
+
+name hiding
+name masking
+name shadowing
+
+// C dilinde bu durumda global ismi kullanmanın hiçbir yolu yok.
+// C++ dilinde ise bunun için bir operatör mevcut. :: (scope resolution operator - kapsam çözünürlük operatörü) (unary operator - tek olarak kullanmak)
+
+::x derleyici bu ismi global isim alanında ara.
+
+printf("x = %d", ::x);
+
+int x = 10; (local x hides global x (yerel x, global x ismini gizledi))
 
 int main()
 {
@@ -129,4 +142,85 @@ int main()
     printf("x = %d", x);
 }
 
+İsmin gizlenmesi iç içe bloklarda da olabilir.
+
+int main()
+{
+    int x = 10; // gizlenmiş, maskelenmiş isim. C dilinde bu ismi kullanmanın bir yolu yoktur. C++'da da yoktur. Sadece global bir isim alanına erişmek için :: operatörü kullanılır.
+
+    if(1) {
+        int x = 20;
+
+        x++;
+    }
+}
+
+Initialization is not assignment!
+İlk değer verme, atama değildir!
+
+int x = 10; // x ismine ilk değer vermek, initialize etmek.
+
+int x = 24; // bu bir bildirim, declaration. ilk değer vermek.
+x = 48; // bu bir deyim, statement. atama. 
+
+-----------------------------------------------------------------------
+
+Fonksiyonlar (Function, Subroutine)
+
+fonksiyon
+işlev
+yordam
+
+Fonksiyonlar C dilinde programların temel yapı taşlarıdır.
+Fonksiyonlar kod tekrarını önler. Aynı kodu tekrar tekrar yazmaktan kaçınmış oluyoruz.
+Kodu fonksiyonlara ayırarak yazmak, kodun test edilmesini ve okunmasını kolaylaştırır.
+
+CODE REUSE (kodun tekrar kullanımı sağlanıyor)
+
+C ve C++ dillerinde bağımsız bir görevi olan, ayrı bir işi olan, programın çalışma zamanında bu kod çalıştırıldığı zaman bu işin yapılmasını sağlayan bir varlık, kod parçası.
+
+to declare a function (fonksiyon bildirimi)
+to define a function (fonksiyon tanımlaması)
+to call a function (fonksiyon çağrısı)
+
+int main() //fonksiyon tanımı
+{
+    printf("Merhaba Dünya!\"); //fonksiyon çağrısı
+}
+
+ismi main olan fonksiyon tanımlanmış
+ismi printf olan fonksiyon çağrılmış
+
+fonksiyon bildirimi ise bu kod için ön işlemci komutlarındadır.
+
+
+fonksiyon_geri_donus_deger_turu fonksiyon_ismi (fonksiyon parametre parantezi)
+{
+    //fonksiyonun_ana_blogu
+}
+
+double sqrt(double dval)
+{
+    //...
+}
+
+Bir fonksiyonun geri dönüş değer türü olmak zorunda değildir.
+
+a) Fonksiyon bir değer iletiyordur ama geri dönüş değer mekanizması ile iletmiyordur.
+b) Fonksiyon zaten bir değer hesaplamaya yönelik değildir. Örnek olarak ekran temizleyen fonksiyon.
+
+Fonksiyon isimlendirilmesi geleneksel olarak küçük harfle yapılır.
+
+Bir fonksiyonun parametre değişkeni olmayabilir, çünkü çağıran koddan bir değer talep etmiyor olabilir.
+Bu sebeple parametre değişkeni olarak void anahtar sözcüğü kullanılır.
+
+double func(void)
+{
+
+}
+
+double func(int x, int y)
+{
+    
+}
  */

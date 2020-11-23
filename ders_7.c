@@ -5,6 +5,11 @@
 
 int number_of_students; //global isim alanında bir değişken statik ömürlü olarak başlar. ilk değer verilmez ise değerleri 0'dır.
 
+func(void) //implicit int durumu. geri dönüş değer türü verilmeden tanımlanan fonksiyon. C89 standartlarında geçerli, C99 standartlarında kaldırıldı.
+{
+
+}
+
 int main()
 {
 
