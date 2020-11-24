@@ -12,22 +12,14 @@ func(void) //implicit int durumu. geri dönüş değer türü verilmeden tanıml
 
 int main()
 {
+/*  int x = 987;
+    printf("%d", printf("%d", printf("%d", x))); */
 
-    int number_of_tables; // 
-    30;
-    30U;
-    30L;
-    30UL;
-    30LL;
-    30ULL;
+    char str[100];
 
-    3.f;
-
-    double x = 10.0, y =  3.0;
-
-    printf("Power Function in C: %lf", pow(x,y));
+    printf("girin: ");
+    scanf("%s", str);
 }
-
 /* 
 
 Ders7

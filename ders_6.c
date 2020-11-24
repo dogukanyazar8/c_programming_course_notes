@@ -81,6 +81,119 @@ int main ()
 
 }
 
-DK 35.47
+C ve C++ dillerinde bir fonksiyonun içerisinde bir fonksiyon tanımlanması yoktur. Sentaks hatasıdır.
+Fonksiyon içinde fonksiyon tanımlanamaz.
+
+Bütün fonksiyonlar global alanda ayrı ayrı tanımlanırlar.
+
+Fonksiyonların geri dönüş değeri üretmesi ve return deyimi
+
+RETURN STATEMENT
+
+Statements
+
+expression statement
+x + 5;
+compound statement
+{
+
+}
+null statement
+;
+control statement
+if
+while
+for
+do while
+
+switch
+go to
+
+continue
+break
+return
+
+-----------------------------------------------------------------------
+
+RETURN STATEMENT
+
+Yalın Return Deyimi (İfadesiz Return Deyimi)
+return;
+
+Yanında ifade olan return deyimi (İfadeli Return Deyimi)
+return expr;
+
+Yalın return deyimi void fonksiyonlarda kullanılır.
+Geri dönüş değeri üretmeyen fonksiyonlar kullanılır.
+
+Return deyiminin yürütülmesiyle bir fonksiyonun kodunun çalışması sona erer.
+
+void func(void)
+{
+    statement1;
+    statement2;
+    if(x > 10)
+        return;
+    statement3;
+}
+
+Return ifadesinin değeri hesaplanır ve hesaplanan değer fonksiyonun geri dönüş değeri olarak fonksiyonu çağıran koda iletilir.
+
+return x + y;
+return a * a * a;
+return 8;
+
+C ve C++ dillerinde bir fonksiyon yalnızca tek bir değer döndürebilir.
+
+
+//one-liner
+Bir fonksiyonun kodu tek bir satırsa, bu fonksiyona one-liner fonksiyon deniliyor.
+
+int sum (int x, int y)
+{
+    return x + y;
+}
+
+int max2 (int x, int y)
+{
+    if (x > y)
+        return x;
+    
+    return y;
+}  
+
+int abs (int x)
+{
+    if (x < 0)
+        return -x;
+    return x;
+}
+
+int max3 (int x, int y, int z)
+{
+    int max = x;
+    
+    if (y > max)
+        max = y;
+    if (z > y)
+        max = c;
+    
+    return max;
+}
+
+Geri dönüş değeri olan bir fonksiyonun tanımında return deyimi olmaması tanımsız davranıştır. 
+Fonksiyonun geri dönüş değeri çöp değerindedir. Garbage value - indetermined value.
+Derleyicinin yaptığı lojik kontrollere takılır.
+
+Örnek Fonksiyon:
+
+int func (int x)
+{
+    if (x > 210)
+        return x;
+    //?? return deyimi yok.
+}
+
+DK 1:48:30
 
  */
