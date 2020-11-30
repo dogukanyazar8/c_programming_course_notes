@@ -194,6 +194,82 @@ int func (int x)
     //?? return deyimi yok.
 }
 
-DK 1:48:30
+1) Bir fonksiyonun geri dönüş değeri o fonksiyonun varlık nedeni olabilir. Yani fonksiyon zaten o değeri hesaplamak için vardır. 
+Doğal olarak bu fonksiyonun geri dönüş değeri hesaplanan değerdir.
+
+Örnek: Kürenin hacmini hesaplayan fonksiyon
+Örnek: 3 sayıdan en büyüğünü hesaplayan fonksiyon
+
+2) Bir soruya evet/hayır doğru/yanlış geçerli/geçersiz yanıtını veren fonksiyonlar. Fonksiyonun varlık nedeni bir soruya cevap vermek.
+test functions
+query functions
+predicate
+
+Bu tarz test fonksiyonlarının geri dönüş tipi int'dır.
+
+int is_prime
+int is_valid_card
+int isupper
+
+C'de geleneksel olarak boolean yerine int türü kullanılır.
+
+boolean false => int x = 0;
+boolean true => non zero.
+
+Geri dönüş değeri başarı değeri olan fonksiyonlar vardır. 
+Bu fonksiyonlar işlerini yaptıktan sonra geri dönüş değeri olarak başarı bilgisini iletebilir.
+
+connect_database
+open_file
+transfer_data
+
+int remove(const char *p)
+
+C'de geleneksel olarak main fonksiyonun geri dönüş değeri int yapılır.
+
+
+//main fonksiyonun geri dönüş değeri programın geri dönüş değeri
+0 => başarı (program işini yaptı, program başardı)
+
+int main(void)
+{
+    return 0;
+}
+
+int main(void)
+{
+    return 1; //program burada sonlandırılmış fakat işini yapamamış.
+}
+
+int main()
+{
+    FILE* f;
+
+    f = fopen("database.dat", "rb");
+    if (f == NULL) {
+        fprintf(stderr, "veri tabanı açılamıyor\n");
+        return 1;
+    }
+
+    return 0;
+}
+
+exited with code 0.
+exited with code 1.
+
+C99 standartlarıyla main fonksiyonunda return deyimi yoksa, derleyici bunu kendisi ekliyor.
+return 0;
+
+Bazı fonksiyonların geri dönüş değeri tamamlayıcı bir bilgi.
+
+Örnek olarak: printf fonksiyonu.
+Geri dönüş değer bilgisi karakter sayısıdır.
+
+Bazı fonksiyonların ise geri dönüş değeri yoktur.
+Fonksiyon bir değer hesaplıyor olabilir ama geri dönüş mekanizması ile göndermiyordur.
+Veya fonksiyon geriye hiçbir değer göndermiyordur. (ekran temizleyen fonksiyon)
+
+void clear_screen(void);
+void sleep(double millisecond);
 
  */
