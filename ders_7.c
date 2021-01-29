@@ -40,8 +40,9 @@ a) bu değeri kaynak kodda birden fazla yerde kullanmak için
 
 scope leakage (kapsam sızıntısı)
 
+//gereksiz yere kullanım
 {
-    int nx = ndigit(x); //gereksiz yere kullanım
+    int nx = ndigit(x); 
     int ny = ndigit(y);
 
     if (nx + ny > 5)

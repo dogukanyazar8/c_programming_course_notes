@@ -216,7 +216,7 @@ C'de geleneksel olarak boolean yerine int türü kullanılır.
 boolean false => int x = 0;
 boolean true => non zero.
 
-Geri dönüş değeri başarı değeri olan fonksiyonlar vardır. 
+3) Geri dönüş değeri başarı değeri olan fonksiyonlar vardır. 
 Bu fonksiyonlar işlerini yaptıktan sonra geri dönüş değeri olarak başarı bilgisini iletebilir.
 
 connect_database
@@ -226,7 +226,6 @@ transfer_data
 int remove(const char *p)
 
 C'de geleneksel olarak main fonksiyonun geri dönüş değeri int yapılır.
-
 
 //main fonksiyonun geri dönüş değeri programın geri dönüş değeri
 0 => başarı (program işini yaptı, program başardı)
@@ -257,15 +256,25 @@ int main()
 exited with code 0.
 exited with code 1.
 
+------------------------------------------------------------------------------------------------
+
 C99 standartlarıyla main fonksiyonunda return deyimi yoksa, derleyici bunu kendisi ekliyor.
-return 0;
 
-Bazı fonksiyonların geri dönüş değeri tamamlayıcı bir bilgi.
+int main(void)
+{
+    //C99 Standartlarıyla derleyici buraya "return 0; ekliyor, eğer yoksa.
+}
 
-Örnek olarak: printf fonksiyonu.
-Geri dönüş değer bilgisi karakter sayısıdır.
+return 1; ne demek? -> Bu tamamen fonksiyona bağlı bir bilgidir. Programın akışına, contexte, fonksiyona bağlıdır.
 
-Bazı fonksiyonların ise geri dönüş değeri yoktur.
+------------------------------------------------------------------------------------------------
+
+4) Bazı fonksiyonların geri dönüş değeri tamamlayıcı bir bilgi.
+
+Örnek olarak: printf fonksiyonu. int printf(const char *, ...);
+Bu fonksiyonun geri dönüş değer bilgisi ekrana yazılan karakter sayısıdır.
+
+5) Bazı fonksiyonların ise geri dönüş değeri yoktur. (void fonksiyonlar)
 Fonksiyon bir değer hesaplıyor olabilir ama geri dönüş mekanizması ile göndermiyordur.
 Veya fonksiyon geriye hiçbir değer göndermiyordur. (ekran temizleyen fonksiyon)
 
