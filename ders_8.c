@@ -1,3 +1,5 @@
+
+
 /*
 
 Ders8
@@ -100,12 +102,156 @@ Ek olarak 0 da bir sabittir. Sıfırın da türü vardır.
 Taşma durumunda ne olur?
 
 Eğer yazılan sabit bir son ek içermiyorsa ve int türünü aşıyorsa, sabitin türü bu durumda hangi sayı sisteminde yazıldığında da bağlı
+    
     Eğer taşan sabit, 10'luk sayı sisteminde yazılmışsa
 
     int'e sığmadı,
     long'a sığmadı,
     unsigned long'a sığmadı,
     long long'a sığmadı,
-    unsigned long long 
+    unsigned long long
+
+    Eğer taşan sabit, 8'lik veya 16'lık sayı sisteminde yazılmışsa
+
+    int'e sığmadı,
+    unsigned int'e sığmadı,
+    long'a sığmadı,
+    unsigned long'a sığmadı,
+    long long'a sığmadı,
+    unsigned long long
+
+    4976123871u -> Sonunda U son eki olduğunda, taşsa da unsigned olmak zorundadır.
+
+------------------------------------------------------------------------------------------------
+
+
+Gerçek Sayı Sabitleri
+
+Eğer bir sabit nokta içeriyorsa varsayılan olarak sabitin türü double'dır.
+
+Sabiti 34.4 olarak yazıyoruz fakat bilgisayar bunu bize 34.39999999999 gibi bir şekilde gösteriyor. Bu neden?
+
+Biz 34.4 gerçek sayı sabitini yazıyoruz fakat double sayı formatında bunun karşılığını elde etmek tam olarak mümkün değil.
+
+Mantissa alanındaki bit sayıları toplandığında tam olarak 34.4 yapmıyor. 34.4'e en fazla bu şekilde yaklaşabiliyoruz.
+
+34.;
+34.0;
+0.52;
+.52;
+.4;
+
+Gerçek sayı sabitinin float türü olması için küçük veya büyük harf f - F eki alması gerekiyor.
+
+34.8F;
+22.4f;
+0.f;
+762f;   -> sentaks hatası. nokta içermiyor.
+
+8;      int
+8L;     long
+8.;     double
+8.L;    long double
+
+Gerçek sayı sabitlerinin yazımında kullanılan notasyona üstel notasyon diyoruz. (Scientific Notation)
+
+2.7 * 10^4
+
+2.7e3
+2.7E-5
+
+3E4
+3e4
+23e-4
+
+2.6e3;
+2E4;
+
+#include <stdio.h>
+
+int main()
+{
+    3E4;
+    2.6E3;
+    2E4;   
+    1.2E-3;
+
+    float f = 1.4;
+
+    if (f == 1.4)
+    {
+        printf("Dogru!\n");
+    }
+    
+    else
+        printf("Yanlis!\n");       
+
+    return 0;
+}
+
+#include <stdio.h>
+
+int main()
+{
+    double dval = 0.;
+
+    for (int i = 0; i < 10; ++i)
+        dval += 0.1;
+    printf("dval = %f\n", dval);
+
+    if (dval == 1.) {
+        printf("Evet Dogru!\n");
+    } else {
+        printf("Hayır Yanlis!\n");
+    }
+}
+
+Yukarıdaki iki program da programın çalışma zamanında yanlış kısmına girecektir. Gerçek sayı aritmetiği, tam sayı aritmetiği gibi değildir.
+
+------------------------------------------------------------------------------------------------
+
+Karakter Sabitleri
+
+int türden sabitlerin bir alt kategorisidir, sabitlerin bir yazım biçimidir.
+
+C dilinde karakter sabitlerinin türü int türüdür.
+C++ dilinde karakter sabitlerinin türü char türüdür.
+
+'A'
+'D'
+'+'
+
+Escape Sequence 
+
+'\n'
+'\45'
+'\145'
+
+Karakter Kodlaması (Character Encoding)
+
+ASCII
+UNICODE
+EBCDIC
+
+'A'
+
+A karakterinin karakter kodlamasında kullanılan B karakterinin kod numarası. Karakter kodlama sistemlerinde her bir karakterin bir kod numarası vardır. (Coding Place)
+
+ASCII karakter kodlamasında 128 tane karakter vardır.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
 
 */
+
+
