@@ -239,19 +239,297 @@ A karakterinin karakter kodlamasında kullanılan B karakterinin kod numarası. 
 
 ASCII karakter kodlamasında 128 tane karakter vardır.
 
+7 Bitli
 
+0 - 127
 
- 
+Bu karakter kodlamasında büyük harfler ve küçük harfler tek bir blokta değil. Büyük harf karakterleri bittikten 6 karakter sonra küçük harf karakterleri geliyor.
 
+Aralarında 6 karakter var. Neden?
 
+Aradaki farkı 32'ye çekmek için. Böylece bir karakter kodunu tutan değişkenin 5. bitini 0'layarak veya 1'leyerek,
+Aynı karakterin büyüğünden küçüğüne, küçüğünden büyüğüne dönüşüm yapmayı en hızlı şekilde gerçekleştirmek için.
 
+Örnek olarak ASCII karakter kodlamasındaki 66 kod numarasının karşılığı büyük harf B harfidir. Karakter kod numarasına 32 eklersek, küçük harf b harfini buluruz. 98 - b
 
+Büyük harf karakterleri: 26 tane (Hex 41'den başlıyor)
 
+65  A
+66  B
+.....
+90  Z
 
+97  a
+98  b
+99  c
 
+Rakam Karakterleri: Decimal 48 (Hex 30'dan başlıyor)
+    Tüm karakter kodlama sistemlerinde rakam karakterlerinin ardışık olma garantisi verilmiştir. Yani buna güvenilerek kod yazılabilir. Ardışık olmak zorundadır.
 
+48  0   0011 0000
+49  1   0011 0001
+50  2   0011 0010
 
+2'nin kod numarasının 2'lik sayı sisteminde yazılması durumunda düşük anlamlı nibble: 2
+Yani bir rakam karakterinin kodunun, düşük anlamlı nibble'ı, değer olarak o rakamın kendisi.
+
+7   55  0011 0111 -> (0111) Düşük Anlamlı Nibble 7
+
+Bu karakterlerin yerleştirilme biçimi tesadüf değildir.
+
+Alpabetic       Character (Harf Karakterleri)
+Numeric         Character (Rakam Karakterleri)
+Alphanumeric    Charahter (Alpabetic + Numeric)
+
+Printable / Graphic Character (Görüntüsü olan karakterler)
+Control Character (Görüntüsü olmayan, özel amaçlar için kullanılan karakterler)
+Printable fakat Alphanumeric değil -> Punctuation Character (. , " ' ! { [ ] } ")
+
+ASCII karakter kodlamasında 0 dahil, 31 dahil, bu aradaki 32 karakter kontrol karakteridir, 127 yani son karakter de kontrol karakteridir.
 
 */
 
+/* ASCII Karakter Kodlamasıyla İlgili C Programı
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    FILE *f = fopen("ascii.txt", "w");
+    if (!f) {
+        fprintf(stderr, "dosya olusturulamadi!\n");
+        return 1;
+    }
+
+    for (int i = 0; i < 128; ++i)
+    {
+        if (iscntrl(i))
+        fprintf(f, "%-3d %2X    KONTROL KARAKTERI\n", i, i);
+        else
+        fprintf(f, "%-3d %2X    %c\n", i, i, i);
+    }
+
+    fclose(f);
+}
+
+*/
+
+/* Girilen Karakterin ASCII Kod Numarasını Gösteren Uygulama
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    int c;
+
+    printf("Bir karakter girin: ");
+    c = getchar();
+
+    printf("%c karakterinin kod numarası %d\n", c, c);
+}
+
+*/ 
+
+/*
+
+#include <stdio.h>
+
+int main()
+{
+    int x = '?';
+
+    printf("X = %d", x);
+}
+
+-----------------------------------------------------------------------------------------------------
+
+*/
+
+
+/*
+
+Escape Characters (\)
+
+\ karakteri, ters bölü karakteri, karakterlerin sabitlerinin yazdırılmasında escape olarak kullanılıyor.
+
+escape sequence (3 ayrı escape sequence biçimi vardır)
+
+'\a'    alert (bell) (çan sesi)
+'\b'    backspace (geri boşluk)
+'\n'    new line 
+'\r'    carriage return
+'\t'    horizontal tab
+'\v'    vertical tab
+'\f'    form feed
+'\0'    null character
+'\?'    question mark
+'\''    single quote
+'\"'    double quote
+'\\'    backslash
+
+Karakter sabitinin hexadecimal sayı sisteminde yazılması.
+
+'\x1a'
+'\x41'
+'\x7B'
+'\x2E'
+
+Karakter sabitinin octal sayı sisteminde yazılması.
+
+'\103'
+'\76'
+'\134'
+
+Karakter sabiti demek, karakter sabitleriyle oluşturulmuş bir dizi demektir.
+
+"\x42URS\x41\n" (BURSA)
+
+\102\101\102\101\012" (BABA)
+
+/* escape sequence karakterlerinin ASCII kodunun yazdırılması
+
+#include <stdio.h>
+
+int main()
+{
+    printf("new line            %d\n", '\n');
+    printf("carriage return     %d\n", '\r');
+    printf("horizontal tab      %d\n", '\t');
+    printf("vertical tab        %d\n", '\v');
+    printf("form feed           %d\n", '\f');
+    printf("backspace           %d\n", '\b');
+    printf("alert               %d\n", '\a');
+    printf("single quote        %d\n", '\'');
+    printf("double quote        %d\n", '\"');
+    printf("double quote        %d\n", '"'); 
+    printf("null character      %d\n", '\0');
+    printf("backslash           %d\n",  '\\');
+}
+
+*/
+
+/*
+
+#include <stdio.h>
+
+int main()
+{
+    printf("\x42URS\x41\n");
+    printf("\x4b\x4f\x53\x45\x44\x45\x20\x4b\x41\x46\x41\x4e\x41\x20\x41\x54\x41\x52\x49\x4d");
+    printf("\102\101\102\101\012");
+}
+
+*/
+
+/*
+
+Standart Kütüphaneye Giriş
+
+Standard C Library
+
+C'nin standartları tarafından garanti altına alınmış, derleyicilerin sağlamakla yükümlü olduğu bileşenler. 
+
+Standart C Fonksiyonları, bu kütüphanenin en önemli bir bileşeni.
+
+Standard C Function
+Standard Macros
+Standard Type Alias
+Standard User Defined Types
+
+1 - Common Interface
+2 - Code Reuse
+3 - Portability
+
+Common Interface: Standart kütüphane, ortak bir arayüz sağlıyor. Her şey aynı şeye baktığında aynı bilgiyi elde ediyor, aynı şeyi anlıyor, algılıyoruz. 
+
+sqrt(abs(x))
+
+strcat(strcpy(s1, s2), s3)
+
+Yazılmışı Var!: Profesyonel düzeyde yazılmış, test edilmiş, derleyiciler tarafından optimize edilmiş standart kodları kullanabiliyoruz.
+
+Taşınabilirlik: Standart kütüphaneden bir fonksiyon çağırdığımızda, bu fonksiyonun kodu farklı işletim sistemleri için farklı yazılmış olabilir, nasıl yazıldığı bizi ilgilendirmiyor.
+
+Standart C kütüphanesi farklı alt modüllerden oluşuyor. 
+
+Örnek olarak matematik ile ilgili hizmet veren fonksiyonlar math.h isimli kütüphanenin bileşenleri.
+Giriş çıkış işlemleri stdio.h
+Yazılarla ilgili işlemler string.h
+Karakterle ilgili işlemler ctype.h
+
+C++ dilinde ise stdio.h => cstdio
+
+Ön işlemleri komutlarında herhangi bir kütüphane bileşenini include ettiğimizde ilgili fonksiyonların tanımları gelmiyor.
+Fonksiyonların tanımları yok, kodları yok. Sadece fonksiyon bildirimleri var. Bu fonksiyonlar kodlanmış, derlenmiş. Biz derlenmiş kodları kullanıyoruz.
+Derleyici programlarda bu kodların object kodları var.
+
+int printf(const char*, ...)
+
+Variadik fonksiyonlar istenildiği kadar parametre ile çağrılabilir.
+
+int func(int x, ...); 
+
+... (ellipsis)
+
+*/
+
+/* 1'den 100'e kadar olan sayıların kareköklerini standart çıkış akımına gönderen program.
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    for (int i = 1; i <= 100; i++)
+    {
+        printf("%3d %f\n", i, sqrt(i));
+    }
+}
+
+*/
+
+/* A üzeri B işlemini hesaplayan program
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double x, y;
+    printf("Iki gercek sayi giriniz: ");
+    scanf("%lf%lf", &x, &y); // C dilinde bütün fonksiyon çağrımları call by reference. 
+    printf("%f ==> %f = %f\n", x, y, pow(x, y));
+}
+
+*/
+
+/*
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int tamSayi;
+    printf("Bir tam sayı giriniz: ");
+    scanf("%d", &tamSayi);
+    printf("%d sayisinin mutlak degeri: %d", tamSayi, abs(tamSayi));
+}
+
+*/
+
+/*
+
+Giriş Çıkış İşlemleri (1) - Input Output Operations
+
+Program söz konusu olduğunda, programın dış dünyayla olan ilişkisini anlatan işlemlerdir.
+
+Program çalıştığında, dış dünyayla bir veri alış verişinde olabilir. 
+
+Programımıza gelen byte'lar.    Giriş Kaynağı:Input Stream      Keyboard, File, Network, Program
+Programımızdan giden byte'lar.  Çıkış Kaynağı:Output Stream     Console, File, Network, Program
+
+*/
 

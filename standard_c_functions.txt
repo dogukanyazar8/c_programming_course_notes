@@ -1,0 +1,9 @@
+<math.h>
+    
+double sqrt(double);
+double pow(double base, double x);
+int abs(int);
+double fabs(double);
+long labs(long);
+
+
