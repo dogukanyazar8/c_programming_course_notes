@@ -6,4 +6,10 @@ int abs(int);
 double fabs(double);
 long labs(long);
 
+<stdio.h>
+
+int printf(const char *p, ...);
+int scanf(const char *p, ...);
+
+
 
