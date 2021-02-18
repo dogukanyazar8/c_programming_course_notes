@@ -410,6 +410,28 @@ int main()
     printf("Scanf Donus Degeri: %d", retval); // ctrl - z / d
 }
 
+#include <stdio.h> // Standart giriş akımının tamponunu nasıl boşaltabiliriz?
+
+void clar_input_buffer(void)
+{
+    int c;
+    
+    while((c = getchar()) != '\n' && c != EOF);
+}
+
+int main()
+{
+    int x, y;
+    printf("Bir tam sayi giriniz: ");
+    scanf("%d", &x);
+    printf("Bir tam sayi daha giriniz: ");
+    clar_input_buffer();
+    scanf("%d", &y);
+
+    printf("X = %d\n", x);
+    printf("Y = %d\n", y);
+}
+
 */
 
 /*
