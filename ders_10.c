@@ -328,10 +328,320 @@ Tam sayı işlemlerinde 0'a bölmek, tanımsız davranıştır. Sağdaki operand
 Mod operatörü bazı programlama dillerinden farklı olarak, C dilinde bir tam sayı operatörüdür. 
 Mod operatörünün sol veya sağ operandının gerçek sayı olması sentaks hatasıdır.
 
-C dilinde bir gerçek sayının bir gerçek sayıya bölümünü, 
+C dilinde bir gerçek sayının bir gerçek sayıya bölümünden kalanı operatör seviyesinde bir işlemle elde edemiyoruz.
+Bu işlemi yerine getirmek için ideal olan yol standart bir c fonksiyonu kullanmaktır. fmod fonksiyonu.
 
 x % y
 
+    float x, y;
+
+    printf("Iki sayi giriniz: ");
+    scanf("%f%f", &x, &y);
+
+    printf("%f / %f = %lf", x, y, fmod(x, y));
+
+Mod operatörü de özünde bir bölme işlemi içerdiğinden sağ operandının 0 olması tanımsız davranıştır.
+
+Kodlama Editörlerine Dair Ek
+CTRL - D tuş kombinasyonu imlecin bulunduğu satırın bir kopyasını çıkartır.
+CTRL - SHIFT - L tuş kombinasyonu imlecin bulunduğu satırı siler.
+
+    int x, y;
+
+    printf("Iki tam sayi giriniz: ");
+    scanf("%d%d", &x, &y);
+
+    printf("%d * %d = %d\n", x, y, x * y);
+    printf("%d / %d = %d\n", x, y, x / y);
+    printf("%d %% %d = %d\n", x, y, x % y);
+
+    int x;
+
+    printf("4 basamakli bir tam sayi girin: ");
+    scanf("%d", &x);
+
+    printf("binler basamagi = %d\n", x / 1000);
+    printf("yuzler basamagi = %d\n", x % 1000 / 100); //veya x / 100 % 10
+    printf("onlar basamagi = %d\n", x % 100 / 10); //veya x / 10 % 10
+    printf("birler basamagi = %d\n", x % 10);
+
+Öncelik parantezi kullanmasak da, bu operatörlerin yönü soldan sağa olduğu için derleyici bunu bu şekilde algılayacak.
+    
+    int x;
+
+    printf("4 basamakli bir tam sayi girin: "); // 1234
+    scanf("%d", &x);
+
+    printf("%d sayisinin basamaksal tersi %d\n", x, 
+    x / 1000 + 
+    x / 100 % 10 * 10 + 
+    x / 10 % 10 * 100 + 
+    x % 10 * 1000);
+
+    int hour, n;
+
+    printf("Saat kac? ");
+    scanf("%d", &hour);
+    printf("Kac saat sonrasi? ");
+    scanf("%d", &n);
+
+    printf("saat %d ve %d saat sonra %d olacak.\n", hour, n, (hour + n) % 12);
+
+Arttırma ve Eksiltme Operatörleri (Increment & Decrement Operators) plusplus & minusminus
+
+Operatör öncelik tablosunda 2. öncelik seviyesindir.
+Operandları L value ifadeleri olmak zorundadır. Sol taraf değeri olmalıdır.
+Unary operatörlerdir. Tek operand alırlar. Prefix ve Postfix konumları vardır.
+Bu operatörler ister ön ek ister son ek olarak kullanılsınlar, yan etkileri vardır. Side Effect.
+
+++x ön ek   (prefix ++)
+x++ son ek  (postfix ++)
+
+--x ön ek   (prefix --)
+x-- son ek  (postfix --)
+
+++ -> Operandı olarak aldığı nesnenin değerini 1 arttırıyor.
+-- -> Operandı olarak aldığı nesnenin değerini 1 azaltıyor.
+
+x++
+x = x + 1;
+x += 1;
+
+Bir nesnenin değerini değiştirmek için ön ek veya son ek ++ operatörünü kullanmanın hiçbir farkı yoktur.
+ÖNERİ: Bu tür durumlarda ön ek konumunu kullanmak kodun okunması ve göz aşinalığı açısından daha sağlıklı olur.
+
+    int x = 20;
+    printf("x = %d\n", x);
+    x++;
+    printf("x = %d\n", x);
+    ++x;
+    printf("x = %d\n", x);
+    x--;
+    printf("x = %d\n", x);
+    --x;
+    printf("x = %d\n", x);
+
+++ ve -- operatörleri son ek (postfix) konumunda kullanıldıkları zaman operandı olan nesnenin değerini üretiyorlar.
+
+    int x = 20;
+    printf("X: %d", x++);
+
+    int x = 20;
+    int y;
+
+    y = x++;
+
+    //yukarıdaki deyimi aşağıdaki şekilde de yazabiliriz. ama yukarıdaki deyim çok daha sık kullanılan bir idiom.
+    //y = x;
+    //x = x + 1;
+
+    printf("y = %d\n", y);
+    printf("x = %d\n", x);
+
+Sonuç açısından ikisinin de bir farkı yok. Ama ikinci ifade daha sık kullanılıyor.
+
+    func(x);
+    x = x + 1;
+
+    func(x++)
+
+ön ek ++ ve -- operatörlerinin ürettiği değer nesnenin değerinin 1 fazlası veya 1 eksiğidir.
+
+    int x = 20, y = 20;
+    printf("%d\n", ++x);
+    printf("%d\n", --y);
+
+    printf("X = %d\n", x);
+    printf("Y = %d\n", y);
+
+    int x = 20;
+    int y;
+
+    y = ++x;
+
+    Yukarıdaki deyimi aşağıdaki gibi de yazabiliriz.
+    x = x + 1;
+    y = x;
+
+    int a[100] = { 0 };
+    int idx = 34;
+
+    a[idx++];    // dizinin 34 numaralı elemanına erişeceğiz. 
+                 //arttırma operatörü son ek konumunda, operandı olan nesnenin değerini üretir.
+    
+    int a[100] = { 0 };
+    int idx = 34;
+
+    a[++idx];    // dizinin 35 numaralı elemanına erişeceğiz. 
+                 //arttırma operatörü ön ek konumunda, operandı olan nesnenin bir fazlasını üretir.
+  
+    int x = 12, y = 7;
+
+    printf("%d\n", ++x % y--); // 13 % 7 = 6
+    // x -> 13 y -> 6
+    printf("%d\n", x++ % --y); // 13 % 5 = 3
+
+    int x = 12;
+
+    printf("%d\n", x++); //12 yazılır ekrana
+    printf("%d\n", ++x); //14 yazılır ekrana
+    printf("%d\n", x);  //14 yazılır
+
+KARŞILAŞTIRMA OPERATÖRLERİ
+
+6. Öncelik seviyesi -> < <= > >=        SOLDAN SAĞA ÖNCELİK YÖNÜ
+7. Öncelik seviyesi == !=               SOLDAN SAĞA ÖNCELİK YÖNÜ
+
+C++, Java gibi dillerde karşılaştırma operatörleriyle oluşturulmuş veri türü dilin lojik veri türüdür.
+Boolean, bool.
+
+a > b -> ifadenin türü bool. ifadenin değeri true veya false
+
+Fakat C dilinde karşılaştırma operatörleri işaretli int türünden değer üretir.
+
+a > b -> ifadesinin türü int. ifadenin değeri ise eğer önerme doğru ise ifadenin değeri 1, eğer önerme yanlışsa ifadenin değeri 0
+
+Bu kural bütün karşılaştırma operatörleri için geçerlidir.
+
+Peki diller arasındaki bu konuda fark nedir, fark eden C dilinde karşılaştırma operatörlerinin ürettiği 1 veya 0 değeri, bir çok C idiomunda aritmetik ifadelerde de kullanılıyor.
+
+x = y == z; = -> atama operatörü == karşılaştırma operatörü
+
+Yukarıdaki ifadede eğer y, z'ye eşitse, x'e 1 atanacak, eşit değilse 0 atanacak.
+
+x = y == z;
+
+Aşağıdaki ve yukarıdaki ifadeler aynı anlamdalar.
+
+if(y == z)
+    x = 1;
+else
+    x = 0;
+
+-----------------------------------------------
+
+    int x, y;
+    printf("Iki tam sayi giriniz: ");
+    scanf("%d%d", &x, &y);
+
+    printf("%d > %d = %d\n", x, y, x > y);
+    printf("%d >= %d = %d\n", x, y, x >= y);
+    printf("%d < %d = %d\n", x, y, x < y);
+    printf("%d <= %d = %d\n", x, y, x <= y);
+    printf("%d == %d = %d\n", x, y, x == y);
+    printf("%d != %d = %d\n", x, y, x != y);
+
+İşaret Fonksiyonu
+
+x > 0  -> 1 
+x < 0  -> -1
+x == 0 -> 0
+
+    int x;
+    printf("Bir tam sayi giriniz: ");
+    scanf("%d", &x);
+
+    printf("sign (%d) = %d\n", x, (x > 0) - (x < 0));
+
+-----------------------------------------------
+
+    int x, y, z, t;
+    int pos_cnt = 0;
+    printf("4 sayi giriniz: ");
+    scanf("%d%d%d%d", &x, &y, &z, &t);
+
+    if(x > 0)
+        ++pos_cnt;
+    
+    if(y > 0)
+        ++pos_cnt;
+        
+    if(z > 0)
+        ++pos_cnt;
+
+    if(t > 0)
+        ++pos_cnt;
+
+    //pos_cnt = (x > 0) + (y > 0) + (z > 0) + (t > 0); Yukarıdaki kodu bu şekilde de yapabiliriz.
+  
+    printf("pos_cnt = %d", pos_cnt);
+
+C dili matematiksel notasyona yakın olduğundan dolayı yeni başlayan bir ifade yazarken yanlış yazabilir.
+
+-b / 2a ifadesi. 
+
+-b / 2 * a ->  c dilinde yukarıdaki ifadeyi bu şekilde yazamayız, operatör önceliğinden dolayı.
+
+-b / (2 * a) veya -b / 2 / a
+
+if (10 < x < 20) //bu ifade C dilinde her zaman doğrudur. always true. aralık testini bu şekilde yazamayız.
+
+10 < x => 1 olduğunda veya 0 olduğunda 20 den küçük olacağı, always true.
+
+if(x > 10 && x < 20) bu şekilde yazılabilir.
+
+if (x = 5)  //x değişkenine 5 atadık. always true.
+if (x == 5) //karşılaştırma operatörü olan ==, burada üretilen değer 0 veya 1.
+
+Gerçek sayıları birbirleriyle eşitlik karşılaştırmasına sokmayın!
+Gerçek sayıları == ile karşılaştıramayız.
+
+d1 == 1.0 //yanlış bir ifade
+
+    double dval = 0.;
+
+    for(int i = 0; i <10; ++i){
+        dval += 0.1;
+    }
+
+    printf("dval = %f\n", dval);
+
+    if(dval == 1.)
+        printf("Evet dogrudur\n");
+    else
+        printf("Hayir yanlistir\n");
+        
+
+float, 4 bytelık. mantissa kısmı 23 bit.
+0.1 sabiti ise double türden bir sabit. mantissa kısmı daha fazla. 
+double türden float türüne kopyalama yaptığımızda hassasiyet farkı oluyor.
+0.1 f'ye atandığında, ondalık kısmı daha az bitle temsil edildiği için değer kaybı oluyor.
+
+    float f = 0.1;
+
+    if(f == 0.1)
+        printf("Evet dogru.");
+    else
+        printf("Hayir yanlis.");
+
+İki gerçek sayıyı nasıl karşılaştıracağız?
+
+Bu gerçek sayılar yeteri kadar birbirine yakınsa, bunları eşit kabul edeceğiz.
+
+dx == dy yapmak yerine 
+
+fabs(dx - dy) < e
+
+-----------------------------------------------
+
+Lojik Operatörler
+
+Lojik işlemlerin operandları normalde önermelerdir.
+
+p       doğru   yanlış
+değil   yanlış  doğru
+---------------------------
+p   q     p ve q
+D   D       D
+Y   D       Y
+D   Y       Y
+Y   Y       Y 
+---------------------------
+p   q    p veya q
+D   D       D
+Y   D       D
+D   Y       D
+Y   Y       Y 
 
 */
 
@@ -339,12 +649,5 @@ x % y
 
 int main()
 {
-    int x, y;
 
-    printf("bir tam sayi girin: ");
-    scanf("%d", &x);
-
-    y = -x - 5;
-
-    printf("Y = %d", y);
 }
