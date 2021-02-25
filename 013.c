@@ -22,7 +22,7 @@ if(!isupper(c))
 
 ---------------------------------------------------------------------------------------
 
-Çok sık kullanılan bir C idiyomu. If koşun parantezinin içinde ilk önce x'e atama yapılmış,
+Çok sık kullanılan bir C idiyomu. If koşul parantezinin içinde ilk önce x'e atama yapılmış,
 atama operatörünün ürettiği değer nesnenin değeri, ardından karşılaştırılma yapılmış.
 
 x = func();
@@ -44,7 +44,7 @@ If parantezi içinde atama operatörüyle oluşturulmuş bir ifade.
 
 ---------------------------------------------------------------------------------------
 
-if((c = getchar()) != '\n) {} -> Atama operatörünün ürettiği değerden faylanan if deyimi
+if((c = getchar()) != '\n) {} -> Atama operatörünün ürettiği değerden faydalanan if deyimi
 
 if(c = getchar(), c != '\n') {} -> Virgül operatörü kullanılan if deyimi (yan etki oluşturuluyor)
 
@@ -432,19 +432,131 @@ printf("Bir tam sayi giriniz: ");
 
 Standart getchar ve putchar fonksiyonları
 
-01.22.00
+getchar fonksiyonu formatsız bir giriş fonksiyonudur. Bu fonksiyon standart giriş akımının bufferından bir karakteri alıyor, extract ediyor.
+Geri dönüş değeriyle o karakterin kodunu dönderiyor. Standart inputun bufferındaki ilk karakteri alan, bufferdan çıkartan, geri dönüş değeri olarak onun kod değerini, tam sayı değerini veren fonksiyon.
+
+Bu fonksiyonu çağırdığımızda, standart giriş akımının bufferı boş ise, bir giriş yapmamız istenilecek. Son derece önemli bir fonksiyon.
+scanf fonksiyonu gibi, line buffered bir fonksiyondur. Yani girişin tamamlanması için standart inputa new line verilmesi gerekiyor.
+
+scanf ve getchar fonksiyonları aynı bufferı paylaşıyorlar.
+
+getchar fonksiyonunun geri dönüş tipi int türden.
+
+
+    printf("Bir giris yapin: ");
+    int c = getchar(); //Yapilan giris "BABACIM". Fonksiyon geri dönüş değeri, B'nin kodu olan 66 değeridir. Bu B harfi, artık standart inputun bufferından çıkartıldı.
+    printf("%d", c);
+
+---------------------------------------------------------------------------------------
+
+    printf("Bir giris yapin: "); //Yapılan giris "dogukan". 100 111 103 d o g harflerinin karakter kodlarını yazdırdı, bu karakterler bufferdan çıkartıldı. diğer karakterler bufferda kaldı.
+    int c1 = getchar();
+    int c2 = getchar();
+    int c3 = getchar();
+    printf("%d %d %d\n", c1, c2, c3);
+
+---------------------------------------------------------------------------------------
+
+    int x = 777;
+
+    printf("Bir tam sayi giriniz: ");
+    int c = getchar(); //scanf ile getchar fonksiyonları aynı bufferı kullanırlar.
+    scanf("%d", &x); //Giriş bu şekilde yapılacak: "a456"
+
+    printf("x = %d", x);
+
+---------------------------------------------------------------------------------------
+
+    int c;
+    
+    printf("Evet mi (e) hayir mi (h) : ");
+    c = getchar(); // Bu noktada standart giriş akımının bufferının boş olduğuna dikkat etmeliyiz. Boş olmalı.
+    
+    if(c == 'e')
+        printf("Evet secildi!");
+    else if (c == 'h')
+        printf("Hayir secildi!");
+    else
+        printf("Hatali secim!");
+
+---------------------------------------------------------------------------------------
+
+    int x;
+    int c;
+    printf("Bir tam sayi giriniz: "); //67542 girişi yapılacak.
+
+    x = 0;
+    while((c = getchar()) != '\n'){
+        x = x * 10 + c - '0';
+    }
+
+    printf("x: %d", x);
+
+---------------------------------------------------------------------------------------
+
+Aşağıdaki fonksiyon ile standart inputun bufferını boşaltabiliriz.
+
+void clear_input_buffer(void) 
+{
+    int c;
+
+    while((c = getchar()) != '\n' && c != EOF)
+}
+
+---------------------------------------------------------------------------------------
+
+void clear_input_buffer(void) 
+{
+    int c;
+
+    while((c = getchar()) != '\n' && c != EOF)
+    ;
+}
+
+int main(){
+    int x;
+    int y;
+
+    printf("Bir tam sayi girin: "); // giris: 1984dogukan, 1984'u standart inputun bufferından aldık, extract ettik. dogukan harfleri kaldı.
+    scanf("%d", &x);
+
+    printf("Bir tam sayi daha girin: ");
+    clear_input_buffer();   // standart inputun bufferını temizledik. 
+    scanf("%d", &y);
+
+    printf("%d\n", x);
+    printf("%d\n", y);
+
+---------------------------------------------------------------------------------------
+
+    
+    int c;
+    int sum = 0;
+
+    printf("Bir tam sayi giriniz: ");
+    
+    while ((c = getchar()) != '\n') {
+        sum += c - '0';
+    }
+
+    if (sum % 3 == 0)
+        printf("Evet bolunur!");
+    else
+        printf("Hayir bolunmez!");
 
 */
 
-
 #include <stdio.h>
-#include <math.h>
 
 int main(){
 
-    int x;
-    printf("bir tam sayi girin: ");
-    scanf("%d", &x);
+    int c;
+    int sum = 0;
 
-    abs(x);
+    printf("Bir tam sayi giriniz: ");
+
+    while((c = getchar()) != '\n'){
+        sum += c - '0';
+        printf("SUM: %d\n", sum);
+    }
 }
