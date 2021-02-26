@@ -481,16 +481,30 @@ getchar fonksiyonunun geri dönüş tipi int türden.
 
 ---------------------------------------------------------------------------------------
 
-    int x;
-    int c;
-    printf("Bir tam sayi giriniz: "); //67542 girişi yapılacak.
+//getchar fonksiyonunun geri dönüş değerini %d ile kullandığımızda, o karakterin kod numarasını elde ederiz. ASCII Kodu. Conding Place.
+// c - '0' ifadesinde ise, ASCII karakter kodlamasında karakterler ardışık bir sıralamada olduğundan dolayı girilen karakterin gerçek değerini kullanmak için 0 karakterini girilen karakterden çıkarttık.
+// örnek olarak, eğer 9 girilseydi, 9'un ASCII karakter kodlamasındaki karşılığı 39. 0'ın ise 30. 39-30 = 9 karakterinin değeri sonucuna ulaşırdık.
 
+    int c;
+    int x;
+
+    printf("Bir tam sayi giriniz: "); //2048
+    
     x = 0;
     while((c = getchar()) != '\n'){
-        x = x * 10 + c - '0';
+        x = x * 10 + c - '0'; 
     }
 
-    printf("x: %d", x);
+    printf("Girilen sayi: %d", x);
+}
+
+x = 0 * 10 + 32 - 30 = 2
+
+x = 2 * 10 + 30 - 30 = 20
+
+x = 20 * 10 + 34 - 30 = 204
+
+x = 204 * 10 + 38 - 30 = 2048
 
 ---------------------------------------------------------------------------------------
 
@@ -528,8 +542,7 @@ int main(){
     printf("%d\n", y);
 
 ---------------------------------------------------------------------------------------
-
-    
+   
     int c;
     int sum = 0;
 
@@ -544,12 +557,8 @@ int main(){
     else
         printf("Hayir bolunmez!");
 
-*/
-
-#include <stdio.h>
-
-int main(){
-
+---------------------------------------------------------------------------------------
+    
     int c;
     int sum = 0;
 
@@ -558,5 +567,26 @@ int main(){
     while((c = getchar()) != '\n'){
         sum += c - '0';
         printf("SUM: %d\n", sum);
+    }
+
+---------------------------------------------------------------------------------------
+
+
+
+*/
+
+#include <stdio.h>
+
+int main(){
+
+    int c;
+    int x;
+
+
+    printf("Bir tam sayi girin: ");
+
+    x = 0;
+    while((c = getchar()) != '\n'){
+        x += c - '0';
     }
 }
