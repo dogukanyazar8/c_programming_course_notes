@@ -10,6 +10,14 @@ long labs(long);
 
 int printf(const char *p, ...);
 int scanf(const char *p, ...);
+int getchar(void);
+int putchar(int);
+_getch(void); //std degil
+_getche(void); //std degil
+
+<ctype.h>
+
+
 
 
 

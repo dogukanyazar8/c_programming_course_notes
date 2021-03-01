@@ -571,22 +571,298 @@ int main(){
 
 ---------------------------------------------------------------------------------------
 
+int main()
+{
+    for(int i = 0; i < 1000; ++i){
+        if(i && i % 100 == 0){
+            printf("\n devam etmek icin enter tusuna basin: ");
+            (void)getchar();
+        }
+        printf("%3d ", rand() % 1000);
+    }
+}
 
+---------------------------------------------------------------------------------------
+
+getchar line-buffered bir giriş fonskiyondur. aynı scanfde olduğu gibi,
+standart inputun bufferı boşsa, getchar çağrıldığı zaman new line karakterinin gelmesi zorunlu.
+aksi halde, getchar programı kullanan kişiyi bekletecek.
+
+getchar ve scanf aynı bufferı paylaşıyor.
+
+getchar echoing bir fonksiyondur. echo veren fonksiyon.
+programı kullanan bir tuşa basıyor ama standart outputda da o karakter görünüyor.
+bu bazı durumlarda istenmeyebilir. bu yüzden maalesef standart kütüphanede getchar benzeri, echo vermeyen bir fonksiyon yok.
+
+    int c;
+
+    printf("Bir tusa basin: ");
+    c = getchar();
+
+Derleyiciler standart olmayan fonksiyonlar verebiliyor.
+
+_getch() bu şekilde standart olmayan bir fonksiyon var.
+
+int getchar(void);
+int _getch(void);
+
+Bu fonksiyon getchar ile aynı işi yapıyor, line-buffered değil. Karakteri de standart outputa yazdırmıyor.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> //standart değil.
+
+int main()
+{
+    int c;
+    printf("Bir karakter girin: ");
+    c = _getch(); //standart değil. line-buffered değil. girilen karakteri göstermiyor.
+
+    printf("c = %d", c);
+}
+
+---------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> //standart değil.
+
+int main()
+{
+    int c;
+    printf("Bir karakter girin: ");
+    c = _getche();
+
+    printf("\nc = %d", c);
+}
+
+---------------------------------------------------------------------------------------
+
+int getchar(void);  standart, new line istiyor, echo veriyor.
+int _getch(void);   standart değil, new line istemiyor, echo vermiyor.
+int _getche(void);  standart değil, new line istemiyor, echo veriyor.
+
+---------------------------------------------------------------------------------------
+
+standart putchar fonksiyonu
+stdio kütüphane dosyasının bir fonksiyonu.
+
+putchar kendisine argüman olarak gelen karakteri bunu bir karakterin kodu olarak alıyor,
+o koda sahip olan karakteri standart outputa veriyor.
+
+putchar(65);  //Bu şekilde kullanırsak karakter kodu 65'e denk gelen karakteri yazdıracak.
+putchar('A'); //Bu şekilde kullanırsak A karakter sabitinin kodunu yazacak. Her yerde A yazdıracak.
+
+putchar fonksiyonunun geri dönüş değeri verdiğimiz karakterin kendisi, eğer bir hata olursa -1
+ekrana A karakterini yazdırırsak, A karakterinin kodunu yazdıracak.
+Bir hata olursa -1. 
+
+printf'in %c ile çalıştırılmış hali gibi. ama bu variadic bir fonksiyon değil.
+
+    int ch;
+
+    printf("bir karakter kodu girin: ");
+    scanf("%d", &ch);
+
+    putchar(ch);
+
+---------------------------------------------------------------------------------------
+
+ASCII'de kontrol karakteri olmayan karakterler 33'den başlayarak 127 hariç karakterler.
+Görüntüsü olan bütün karakterleri ekrana yazdırmış olduk.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> //standart değil.
+
+int main()
+{
+    for(int i = 33; i < 127; ++i){
+        putchar(i);
+    }
+}
+
+Bu programı putchar fonksiyonu yerine, printf ile de yapabilirdik.
+
+int main()
+{
+    for(int i = 33; i < 127; ++i){
+        printf("%c", i);
+    }
+}
+
+---------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> //standart değil.
+
+int main()
+{
+    for(;;){
+        putchar(rand() % 26 + 'A');
+        _sleep(rand() % 20 * 10);
+    }
+
+}
+
+---------------------------------------------------------------------------------------
+
+Test Fonksiyonları
+
+Bazı fonksiyonların geri dönüş değeri hesaplanan değer, bazılarının geri dönüş değeri tamamlayıcı bir bilgi, bazılarının ise başarı bilgisi.
+Test fonksiyonlarının geri dönüş değerleri, evet hayır, doğru yanlış, geçerli geçersiz.
+Aslında programlama dillerinde böyle fonksiyonların geri dönüş değeri boolean türü seçiliyor, C dilinde ise int türden yapılıyor.
+
+Karakter Test Fonksiyonları
+
+int isprime(int); -> buradaki int, boolean int anlamına geliyor.
+int is_valid_card(int);
+
+Fonksiyonun geri dönüş değeri 0'dan farklı bir değerse DOĞRU
+0'a YANLIŞ olarak yorumlanıyor.
+
+geri dönüş değeri olan fonksiyonlar
+test function
+query function
+predicate
+
+---------------------------------------------------------------------------------------
+
+x asal sayi ise
+if (isprime(x) != 0)
+if(isprime(x))
+
+x asal sayı değilse
+
+if (isprime(x) == 0)
+if (!isprime(x))
+
+Böyle fonksiyonlar doğrudan one-liner olarak yazılabiliyorlar.
+Öyle bir fonksiyon ki, kodu sadece bir return deyimi.
+
+int iseven(int x)
+{
+    return x % 2 == 0;
+}
+
+int main()
+{
+    int x;
+    printf("Bir tam sayi girini: ");
+    scanf("%d", &x);
+
+    if(iseven(x) != 0){
+        printf("cift sayi\n");
+    }
+
+    else {
+        printf("tek sayi\n");
+    }
+}
+
+---------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> //standart değil.
+
+//eğer geri dönüş değeri non-zero ise sayı asal,
+//eğer geri dönüş değeri zero ise sayı asal değil.
+//c++ olsaydı
+//bool isprime(int val);
+
+
+int isprime(int val);
+
+int main()
+{
+    int x;
+    printf("Bir tam sayi girini: ");
+    scanf("%d", &x);
+
+    if (isprime(x) != 0)
+    if (isprime(x))
+        printf("%d asal sayi\n", x);
+    else
+        printf("%d asal sayi degil\n", x);
+}
+
+---------------------------------------------------------------------------------------
+
+Artık yıl testini asla 4'e tam bölünme biçiminde yapmayın! Bu matematiksel olarak yanlıştır.
+
+4'e tam bölünmesi gerekiyor,
+    ya 100'e tam bolunmeyecek
+    ya da 400'e tam bolunecek
+
+1977 artık yıl değil
+1984 artık yıl. 4'e tam bolunuyor, 100'e tam bolunuyor
+2000 artık yıl. 4'tam bolunuyor, 400'e tam bolunuyor.
+
+1900 artik yil, 4'e tam bolunuyor, 100e tam bolunmuyor
+
+#include <stdio.h>
+
+int isleap(int y)
+{
+    return y % 4 == 0 && (y % 100 != 0 && y % 400 == 0);
+}
+
+int main(){
+    int y;
+    printf("Bir yil girin: ");
+    scanf("%d", &y);
+
+    if(isleap(y)){
+        printf("%d artik yil\n", y);
+    }
+    else {
+        printf("%d artik yil degil\n", y);
+    }
+}
+
+---------------------------------------------------------------------------------------
+
+Standart kütüphanenin önemli bir modülü.
+
+<ctype.h>
+
+Bu başlık dosyasında bildirilen fonksiyonların önemli bir kısmı test fonksiyonları.
+
+Karakter test fonksiyonları. Bir çok programlama dili de bu kütüphanedeki fonksiyonların isimlerini almış.
+
+Bu fonksiyonlar karakterlerin kod numaralarını alıyorlar ve bu karakterlerin belirli özellikleri sağlayıp sağlamadıklarını kontrol ediyorlar.
+
+Hepsinin geri dönüş tipi int.
+
+int is... (int ch);
+
+int isupper(int ch); //evet gonderilen karakter büyük harf karakteri, non-zero değer döndürecek, hayır değilse, 0 döndürecek. 
+int islower(int ch);
+int isalpha(int ch); //harf karakterleri
+int isdigit(int ch); //rakam karakterleri
+int isalnum(int ch); //rakam ya da harf karakterleri
+int isxdigit(int ch); //0123456789ABCDEFabcdef
+int ispunct(int ch); //Görüntüsü var fakat harf veya rakam karakteri değil.
+int isspace(int ch); //space tuşu, yatay ve dikey tab, form feed, new line, carriage return bunlar boşluk karakterleri
+int isblank(int ch); // boşluk ve tab karakterleri
+int isprint(int ch); //görüntüsü olan tüm karakterler
+int isgraph(int ch); //isprintin aynısı, tek fark 32. numaralı space karakteri ' ' printable fakat grafik karakteri değil.
+int iscntrl(int ch); //kontrol karakterleri, görüntüsünü olmayan. ilk 32 karakter. 0 - 31 ve 127 numaralı karakter.
 
 */
 
 #include <stdio.h>
 
+int isleap(int y)
+{
+
+}
+
 int main(){
 
-    int c;
-    int x;
-
-
-    printf("Bir tam sayi girin: ");
-
-    x = 0;
-    while((c = getchar()) != '\n'){
-        x += c - '0';
-    }
 }
+
+
+
