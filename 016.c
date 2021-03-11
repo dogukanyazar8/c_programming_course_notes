@@ -449,11 +449,73 @@ int main(){
     }
 }
 
-01.03.00
+---------------------------------------------------------------
 
+360'ın asal çarpanlarını yazdıran kod.
+
+int main(){
+
+    int x = 360;
+    int n = 2;
+
+    while (x != 1){                
+        while(x % n == 0) {
+            printf("%d ", n);
+            x /= n;
+        }
+        ++n;
+    }
+}
+
+Ekran çıktısı: 2 2 2 3 5 
+
+---------------------------------------------------------------
+
+#include <stdio.h>
+
+int main(){
+
+    int x;
+    int n = 2;
+
+    printf("Bir tam sayi girin: ");
+    scanf("%d", &x);
+
+    while (x != 1) {
+        while (x % n == 0) {
+            printf("%d ", n);
+            x /= n;
+        }
+        ++n;
+    }
+}
+
+---------------------------------------------------------------
+
+Konular:
+
+Comment Lines (Yorum Satırları)
+Fonksiyon Bildirimleri
+Önişlemci Programı ve Önişlemci Komutları
 */
 
 #include <stdio.h>
 
 int main(){
+
+    int x;
+    int n = 2;
+
+    printf("Bir tam sayi girin: ");
+    scanf("%d", &x);
+
+    while (x != 1) {
+        while (x % n == 0) {
+            printf("%d ", n);
+            x /= n;
+        }
+        ++n;
+    }
 }
+
+
