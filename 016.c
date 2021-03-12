@@ -494,28 +494,155 @@ int main(){
 
 Konular:
 
-Comment Lines (Yorum Satırları)
-Fonksiyon Bildirimleri
-Önişlemci Programı ve Önişlemci Komutları
+comment lines (yorum satırları)
+fonksiyon bildirimleri
+ön işlemci programı ve ön işlemci komutları
+switch deyimi
+goto deyimi
+tür dönüşümleri (type conversions)
+rastgele sayı üretimi
+diziler
+
+---------------------------------------------------------------
+
+Yorum Satırları (Comment Lines)
+
+Programlama dili ne olursa olsun, hemen her dilde olan bir araçtır.
+Kaynak dosyaya bir takım yazılar yazıyoruz fakat bu yazılar kod olarak değerlendirilmiyor. Adeta yok sayılıyor.
+Kaynak dosyayı okuyanların gördüğü fakat derleyicinin dikkate almadığı yazılar oluşturuyoruz.
+
+comment lines
+yorum satırları - açıklama satırları
+
+C dilinde açıklama satırları.
+
+C99 standartlarına kadar açıklama satırı oluşturmanın tek bir yolu vardı.
+
+Not bölümü açıklama satırından oluştuğu ve açıklama satırı içinde açıklama satırı olamayacağından dolayı, aşağıdaki açıklama satırı atomlarındaki boşlukları siliniz.
+
+/ * * / bu iki atom arasında kalan her şey, kaynak dosyadan çıkartılıyor.
+
+// C99 standartlarıyla gelen yorum satırı.
+
+C dilinde, standartlara göre açıklama içinde açıklama olamaz. Derleyici eklentileriyle olabilir. Ama standart değildir.
+
+Aşağıdaki kod sentaks hatasıdır.
+
+/ * 
+    abcde..
+    / *
+
+    * /
+* /
+
+---------------------------------------------------------------
+
+//satırın sonuna kadar gecerli, satirin tamami aciklama olabilir.
+int x = 0; //once kod sonra aciklama olabilir.
+//ama once aciklama sonra kod olamaz. cunku aciklama satiri kodu yutar.
+
+---------------------------------------------------------------
+
+Açıklama satırlarını neden kullanıyoruz.
+
+1. kullanımı, ana kullanımı
+
+Kod hakkında yorum, açıklama yapmak. Yani kodun kendisinin fiilen ifade etmediği ama okuyanın o kodu doğru anlaması için ilave edinmesi gereken bilgileri açıklama satırıyla vermek.
+
+Gereksiz açıklamalardan kaçınmalıyız. Gereksiz açıklama yaparsak kodu okuyanı yanıltırız. Kodun açıkca söylediğini ilave yorum satırıyla desteklemeye çalışmayın.
+
+En iyi açıklama hiç yapılmayan açıklamadır. Necati Ergin.
+
+Açıklama satırlarının kod güncellendiğinde, açıklama satırı varsa, onları da güncellemek gerekir.
+
+Birden fazla kod bölümü için açıklama satırı yazmak yerine, bu kodu fonksiyon olarak yazıp, fonksiyona anlamlı bir isim verebiliriz.
+
+//aciklama satiri
+statement1; //aciklama satiri
+statement2; //aciklama satiri
+statement3; //aciklama satiri
+statement4; //aciklama satiri
+
+Yukarıdakinin yerine
+
+get_data_from_database(){
+    
+}
+
+Mümkün olduğu kadar az yorum satırı yazmalıyız. Kısa ve öz. Gereksiz bilgilendirmeleden kaçınmalıyız.
+
+Comment Out
+
+Programcı, kodu yazarken, ihtiyaç halinde kodun bir bölümünü silmek yerine açıklama satırı içerisine alıp, programı bu bu şekilde çalıştırabilir.
+Ama hiçbir zaman açıklama satırı içerisinde kod bırakmamalıyız. 
+
+Neden C dilinde iç içe yorum satırlarına ihtiyaç duyuyoruz?
+
+Comment out yaptığımız bir kod bölümünü kapsayan bir başka kod bölümünü de comment out yapmak istersek açıklama satırı içerisinde açıklama satırı olamayacağından dolayı hata alacağız.
+
+Bu durumu derleyici eklentileriyle çözebiliriz. Veya yorum satırı olarak // kullanırsak da çözebiliriz.
+---------------------------------------------------------------
+
+Kaynak dosyanın ya da başlık dosyanın genel formatlanması.
+
+Her kaynak dosyanın veya başlık dosyasının başında o dosyayla ilgili bilgi veren bir açıklama kısmı oluyor. 
+Bu dosyasının genel olarak ne işe yaradığını anlatan, genel makale özeti gibi. Kaynak dosyanın ne ile ilgili olduğu.
+
+/**********************************************************************
+
+                     file char_comp.c
+                     implementation of char comparison functions
+                     author : dogukan yazar
+                     all right reserved by paycore
+                     last updated: 10.05.1994
+
+**********************************************************************/
+
+// Ve özellikle kaynak dosyalarda, genel bölüm başlıkları olabiliyor. Kaynak dosyaya belirli bir formatı kazandırmak 
+
+
+/*   global declarations    */
+
+
+
+
+/*   function declarations  */
+
+
+
+
+/*
+    function isprime
+    tests primality of an integer
+    returns non-zero if integer is prime returns 0 otherwise
 */
+
+/*
+
+Kontrol deyimlerinin iç içe olması durumunda, görsel algılanmasını ve kodun okunmasını, anlaşılmasını kolaylaştırmak için, kapanan paranteze onun hangi kontrol deyiminin kapanan parantezi olduğunu belirten bir açıklama satırı olabiliyor.
+
+for () {
+    if (x > 5) {
+        while (cex) {
+            if (cex) {
+
+            } //if
+        } //while
+    } //if
+} //for
+
+---------------------------------------------------------------
+
+
+
+*/
+int isprime(int val);
 
 #include <stdio.h>
 
 int main(){
 
-    int x;
-    int n = 2;
 
-    printf("Bir tam sayi girin: ");
-    scanf("%d", &x);
-
-    while (x != 1) {
-        while (x % n == 0) {
-            printf("%d ", n);
-            x /= n;
-        }
-        ++n;
-    }
 }
 
 

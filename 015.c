@@ -467,7 +467,7 @@ Programcıların döngü deyimi tercihi
 
 Döngüyü kontrol eden bir değişken yoksa, while döngü deyimi tercih edilebilir, eğer varsa for tercih edilir.
 
-Programcılar while döngüsünden mümkün olduğunca kaçınılırsa, mümkün olduğunca sadece for döngü deyimini kullanmak için.
+Programcılar while döngüsünden mümkün olduğunca kaçınırlar, mümkün olduğunca sadece for döngü deyimini kullanmak için.
 
 for (;;) sadece iki tane noktalı virgül olabilir.
 
